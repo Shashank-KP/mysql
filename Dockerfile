@@ -27,7 +27,9 @@ ENV MYSQL_USER=mysql \
 #  echo "mysql -e 'GRANT ALL PRIVILEGES ON *.* TO \"root\"@\"%\" WITH GRANT OPTION;'" >> /tmp/config && \
 #  bash /tmp/config && \
 #  rm -f /tmp/config
+
 RUN apt-get update \
+ && apt-get install -y curl apt-utils wget unzip\
  && DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server=${MYSQL_VERSION}* \
  && rm -rf ${MYSQL_DATA_DIR} \
  && rm -rf /var/lib/apt/lists/*
