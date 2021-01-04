@@ -2,9 +2,8 @@ FROM mysql:5.7
 
 COPY ./liferayPortal_uat.sql /home/liferayPortal_uat.sql
 
-RUN SET GLOBAL max_allowed_packet=1073741824
-
 RUN \
+  mysql -u root -e "SET GLOBAL max_allowed_packet=1073741824" && \
   mysql -u root -e "CREATE DATABASE liferayPortal" && \
   mysql -u root -e "CREATE DATABASE gallery3" && \
   mysql -u root -e "CREATE USER 'portalUser' IDENTIFIED WITH mysql_native_password BY 'root@lad#36'" && \
