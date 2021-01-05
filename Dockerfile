@@ -6,15 +6,15 @@ RUN /bin/bash -c "/etc/init.d/mysql start" && \
   sleep 60
   
 RUN \
-  mysql -u root -e "SET GLOBAL max_allowed_packet=1073741824" && \
-  mysql -u root -e "CREATE DATABASE liferayPortal" && \
-  mysql -u root -e "CREATE DATABASE gallery3" && \
-  mysql -u root -e "CREATE USER 'portalUser' IDENTIFIED WITH mysql_native_password BY 'root@lad#36'" && \
-  mysql -u root -e "GRANT ALL PRIVILEGES ON liferayPortal.* TO 'portalUser'@'%' WITH GRANT OPTION" && \
-  mysql -u root -e "CREATE USER 'gallery3admin' IDENTIFIED WITH mysql_native_password BY 'root@lad#36'" && \
-  mysql -u root -e "GRANT ALL PRIVILEGES ON gallery3.* TO 'gallery3admin'@'%' WITH GRANT OPTION" && \
-  mysql -u root -e FLUSH PRIVILEGES && \
-  mysql -u root liferayPortal /home/liferayPortal_uat.sql
+  /etc/init.d/mysql -u root -e "SET GLOBAL max_allowed_packet=1073741824" && \
+  /etc/init.d/mysql -u root -e "CREATE DATABASE liferayPortal" && \
+  /etc/init.d/mysql -u root -e "CREATE DATABASE gallery3" && \
+  /etc/init.d/mysql -u root -e "CREATE USER 'portalUser' IDENTIFIED WITH mysql_native_password BY 'root@lad#36'" && \
+  /etc/init.d/mysql -u root -e "GRANT ALL PRIVILEGES ON liferayPortal.* TO 'portalUser'@'%' WITH GRANT OPTION" && \
+  /etc/init.d/mysql -u root -e "CREATE USER 'gallery3admin' IDENTIFIED WITH mysql_native_password BY 'root@lad#36'" && \
+  /etc/init.d/mysql -u root -e "GRANT ALL PRIVILEGES ON gallery3.* TO 'gallery3admin'@'%' WITH GRANT OPTION" && \
+  /etc/init.d/mysql -u root -e FLUSH PRIVILEGES && \
+  /etc/init.d/mysql -u root liferayPortal /home/liferayPortal_uat.sql
 
 #RUN /bin/bash -c "/usr/bin/mysqld_safe --skip-grant-tables &" && \
 #  sleep 5 && \
