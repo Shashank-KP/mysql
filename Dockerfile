@@ -2,6 +2,9 @@ FROM mysql:5.7
 
 COPY ./liferayPortal_uat.sql /home/liferayPortal_uat.sql
 
+RUN sudo service mysql start && \
+  sleep 60
+  
 RUN \
   mysql -u root -e "SET GLOBAL max_allowed_packet=1073741824" && \
   mysql -u root -e "CREATE DATABASE liferayPortal" && \
