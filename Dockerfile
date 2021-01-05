@@ -2,7 +2,7 @@ FROM mysql:5.7
 
 COPY ./liferayPortal_uat.sql /home/liferayPortal_uat.sql
 
-RUN "/etc/init.d/mysql start" && \
+RUN /bin/bash -c "/etc/init.d/mysql start" && \
   sleep 60
   
 RUN \
